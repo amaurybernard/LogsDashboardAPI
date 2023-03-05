@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+cd /api
+python3 -m app.tasks.db.migrate

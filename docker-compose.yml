@@ -1,0 +1,28 @@
+version: '3'
+services:
+  api: &prod
+    restart: unless-stopped
+    build: .
+    image: logs-dashboard-api
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - prod
+    volumes:
+      - ./:/api
+
+  db:
+    image: postgres:14
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    networks:
+      - prod
+    env_file:
+      - ./docker.env
+
+networks:
+  prod:
+  test:
