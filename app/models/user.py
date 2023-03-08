@@ -17,3 +17,6 @@ class UserRead(schemas.BaseUser[uuid.UUID]):
 class UserCreate(schemas.BaseUserCreate):
     pass
 
+
+class UserUpdate(schemas.BaseUserUpdate):
+    pass
