@@ -11,6 +11,5 @@ COPY ./app /api/app
 WORKDIR /api/app/bin
 
 RUN echo 'export PATH=/api/app/bin:$PATH' >> "$HOME/.bashrc"
-#RUN PATH=/api/app/bin:$PATH
 
-CMD ./start
+CMD ./entrypoint

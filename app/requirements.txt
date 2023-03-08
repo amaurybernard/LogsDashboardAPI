@@ -2,3 +2,5 @@ fastapi>=0.45.0
 uvicorn[standard]
 psycopg2
 sqlalchemy>=2.0.4
+fastapi-users[sqlalchemy]
+asyncpg

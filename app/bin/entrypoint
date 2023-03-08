@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+if [ $ENV == "development" ]; then
+  echo 'Installing debug tools'
+  apt-get update -y && apt-get install -y vim tree
+
+  echo 'Installed.'
+fi
+
+./start

@@ -12,6 +12,8 @@ services:
       - prod
     volumes:
       - ./:/api
+    env_file:
+      - docker.env
 
   db:
     image: postgres:14

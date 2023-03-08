@@ -1,20 +1,19 @@
+from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTableUUID, SQLAlchemyUserDatabase
 from .base import Base, Column, Integer, Boolean, String, relationship
+import uuid
 
-class User(Base):
-    __tablename__ = "users"
+from fastapi_users import schemas
 
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True, nullable=False)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
+
+class User(SQLAlchemyBaseUserTableUUID, Base):
 
     logs = relationship("Log", back_populates="owner")
 
-    @property
-    def password(password: String):
-        pass
 
-    @password.setter
-    def password(self, password: String):
-        hash_password = password
-        return None
+class UserRead(schemas.BaseUser[uuid.UUID]):
+    pass
+
+
+class UserCreate(schemas.BaseUserCreate):
+    pass
+
