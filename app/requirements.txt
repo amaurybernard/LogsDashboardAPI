@@ -4,3 +4,5 @@ psycopg2
 sqlalchemy>=2.0.4
 fastapi-users[sqlalchemy]
 asyncpg
+fastapi_users_db_sqlalchemy
+pydantic_sqlalchemy

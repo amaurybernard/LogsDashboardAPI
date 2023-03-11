@@ -1,12 +1,16 @@
-from fastapi import FastAPI, Depends
+import json
+
+from fastapi import FastAPI, Depends, Body
 from sqlalchemy import select
 import uuid
+import json
+from typing import List
 
 from fastapi_users import FastAPIUsers
 
 from app.authentication.backend import auth_backend
 from app.authentication.user_manager import get_user_manager, current_user
-from app.models import User
+from app.models import User, PydanticLog, Log
 from app.models.user import UserRead, UserUpdate
 
 
@@ -33,5 +37,7 @@ async def root():
     return {"message": "Welcome, please login"}
 
 @app.post('/logs')
-async def log(user: User = Depends(current_user)):
-    return {'message': 'Thanks for your logs'}
+async def create_logs(log: PydanticLog, user: User = Depends(current_user)):
+    return log
+
+#TODO Remove id from pydantic
